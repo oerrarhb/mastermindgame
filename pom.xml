@@ -36,14 +36,14 @@
                     <artifactId>maven-assembly-plugin</artifactId>
                     <executions>
                         <execution>
-                            <id>make-dw-deploy</id>
+                            <id>make-tm-deploy</id>
                             <phase>package</phase>
                             <goals>
                                 <goal>single</goal>
                             </goals>
                             <configuration>
                                 <attach>false</attach>
-                                <finalName>dw-deploy</finalName>
+                                <finalName>tm-deploy</finalName>
                                 <appendAssemblyId>false</appendAssemblyId>
                                 <descriptors>
                                     <descriptor>src/main/assembly/deploy/deploy.xml</descriptor>
@@ -95,7 +95,7 @@
                         <artifactId>maven-assembly-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>make-dw-deploy</id>
+                                <id>make-tm-deploy</id>
                             </execution>
                         </executions>
                     </plugin>
