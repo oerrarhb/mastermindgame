@@ -1,4 +1,4 @@
-#MasterMind
+# MasterMind
 
 * This project aims to find the correct code composed of 4 numbers.
 * To test the solution you need JDK 11 & Maven 3.6, and if you prefer a quickstart use the docker image.
