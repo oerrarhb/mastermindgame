@@ -7,12 +7,6 @@ import java.util.Scanner;
 
 public class SecretWordChecker {
 
-    static class Args {
-        @Parameter(names = "--secret-word")
-        String secret = "1234";
-    }
-
-
     public static String check(String str, String secret) {
         if (str.equals(secret)) {
             return "++++";
@@ -45,11 +39,10 @@ public class SecretWordChecker {
 
     public static void main(String[] argv) {
         var args = new Args();
-        JCommander.newBuilder()//
+        JCommander.newBuilder()
                 .addObject(args)
                 .build()
                 .parse(argv);
-
 
         var scanner = new Scanner(System.in);
         while (true) {
@@ -62,5 +55,10 @@ public class SecretWordChecker {
                 break;
             }
         }
+    }
+
+    static class Args {
+        @Parameter(names = "--secret-word")
+        String secret = "1234";
     }
 }
