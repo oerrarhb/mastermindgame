@@ -7,34 +7,34 @@ import java.util.Scanner;
 
 public class SecretWordChecker {
 
-    public static String check(String str, String secret) {
-        if (str.equals(secret)) {
+    public static String checkSimilarity(String userEntry, String secretCode) {
+        if (userEntry.equals(secretCode)) {
             return "++++";
         } else {
-            var res = "";
-            var strTemp = new StringBuilder(str);
-            var secretTemp = new StringBuilder(secret);
-            for (var i = 0; i < str.length(); i++) {
-                if (secret.charAt(i) == str.charAt(i)) {
-                    res = "+" + res;
-                    strTemp.replace(i, i + 1, "/");
-                    secretTemp.replace(i, i + 1, "*");
+            var outPut = "";
+            var userEntryTemp = new StringBuilder(userEntry);
+            var secretCodeTemp = new StringBuilder(secretCode);
+            for (var i = 0; i < userEntry.length(); i++) {
+                if (secretCode.charAt(i) == userEntry.charAt(i)) {
+                    outPut = "+" + outPut;
+                    userEntryTemp.replace(i, i + 1, "/");
+                    secretCodeTemp.replace(i, i + 1, "*");
                 }
             }
-            return res + addMOptOpt(strTemp, secretTemp);
+            return outPut + checkPartialSimilarity(userEntryTemp, secretCodeTemp);
         }
     }
 
-    public static String addMOptOpt(StringBuilder sb1, StringBuilder sb2) {
-        var res = "";
-        for (var i = 0; i < sb1.length(); i++) {
-            char currentChar = sb1.charAt(i);
-            if (sb2.toString().contains(String.valueOf(currentChar))) {
-                res += "-";
-                sb2.deleteCharAt(sb2.indexOf(String.valueOf(currentChar)));
+    public static String checkPartialSimilarity(StringBuilder userEntryStringBuilder, StringBuilder secretCodeStringBuilder) {
+        var outPut = "";
+        for (var i = 0; i < userEntryStringBuilder.length(); i++) {
+            char currentChar = userEntryStringBuilder.charAt(i);
+            if (secretCodeStringBuilder.toString().contains(String.valueOf(currentChar))) {
+                outPut += "-";
+                secretCodeStringBuilder.deleteCharAt(secretCodeStringBuilder.indexOf(String.valueOf(currentChar)));
             }
         }
-        return res;
+        return outPut;
     }
 
     public static void main(String[] argv) {
@@ -48,7 +48,7 @@ public class SecretWordChecker {
         while (!Thread.currentThread().isInterrupted()) {
             System.out.println("Try guess secret word ?");
             var userEntry = scanner.nextLine();
-            var resultOfCheck = check(userEntry, args.secret);
+            var resultOfCheck = checkSimilarity(userEntry, args.secretCode);
             System.out.println(resultOfCheck);
             if (resultOfCheck.equals("++++")) {
                 System.out.println("You Won ! ");
@@ -60,6 +60,6 @@ public class SecretWordChecker {
 
     static class Args {
         @Parameter(names = "--secret-word")
-        String secret = "1234";
+        String secretCode = "1234";
     }
 }
