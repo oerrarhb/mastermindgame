@@ -45,14 +45,15 @@ public class SecretWordChecker {
                 .parse(argv);
 
         var scanner = new Scanner(System.in);
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             System.out.println("Try guess secret word ?");
             var userEntry = scanner.nextLine();
             var resultOfCheck = check(userEntry, args.secret);
             System.out.println(resultOfCheck);
             if (resultOfCheck.equals("++++")) {
                 System.out.println("You Won ! ");
-                break;
+                scanner.close();
+                Thread.currentThread().interrupt();
             }
         }
     }
