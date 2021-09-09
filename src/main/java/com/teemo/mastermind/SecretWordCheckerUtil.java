@@ -33,7 +33,9 @@ public class SecretWordCheckerUtil {
     public static String checkPartialSimilarity(StringBuilder userEntryStringBuilder, StringBuilder secretCodeStringBuilder) {
         StringBuilder outPut = new StringBuilder();
         for (var i = 0; i < userEntryStringBuilder.length(); i++) {
-            char currentChar = userEntryStringBuilder.charAt(i);
+            var currentChar = userEntryStringBuilder.charAt(i);
+            // We skip processing already matching characters
+            if (currentChar == '$') continue;
             // We check if the secret code after retrieving elements exactly matching
             // still contains some characters of user entry but not in the right index.
             if (secretCodeStringBuilder.toString().contains(String.valueOf(currentChar))) {
