@@ -57,5 +57,4 @@ public class SecretWordCheckerUtil {
                 .limit(secretCodeLength)
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
     }
-
 }
