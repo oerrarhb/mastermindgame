@@ -19,6 +19,20 @@ mvn clean package
 ./target/tm-deploy/bin/play-game --secret-word $SECRET
 ```
 
+### Examples
+
+* Easy mode
+
+```sh
+./target/tm-deploy/bin/play-game --secret-word 1234
+```
+
+* Hard mode
+
+```sh
+./target/tm-deploy/bin/play-game
+```
+
 ## Docker Run
 
 * Build the image
@@ -31,4 +45,18 @@ docker build -t $IMAGE_NAME:latest .
 
 ```sh
 docker run -it $IMAGE_NAME --secret-word $SECRET
+```
+
+### Examples
+
+* If the name of the image is `img`, the command bellow allows to play the easy mode
+
+```sh
+docker run -it img --secret-word 1234
+```
+
+* If the name of the image is `img`, the command bellow allows you to play the hard mode
+
+```sh
+docker run -it img
 ```
