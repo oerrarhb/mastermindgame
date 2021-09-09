@@ -20,7 +20,8 @@ public class SecretWordCheckerUtil {
                     // If we have an exact match, we insert '+' to the output
                     outPut.insert(0, "+");
                     // We replace this by another symbol so it won't be seen again.
-                    // we don't pop out the characters to keep track of indexes.
+                    // we don't pop out the characters to keep track of the indexes.
+                    // we use different symbols to avoid errors
                     userEntryTemp.replace(i, i + 1, "$");
                     secretCodeTemp.replace(i, i + 1, "#");
                 }
@@ -36,8 +37,7 @@ public class SecretWordCheckerUtil {
             var currentChar = userEntryStringBuilder.charAt(i);
             // We skip processing already matching characters
             if (currentChar == '$') continue;
-            // We check if the secret code after retrieving elements exactly matching
-            // still contains some characters of user entry but not in the right index.
+            // We check if the secret code after retrieving elements exactly matching still contains some characters of user entry but not in the right index.
             if (secretCodeStringBuilder.toString().contains(String.valueOf(currentChar))) {
                 // If so, we append '-' to our output
                 outPut.append("-");

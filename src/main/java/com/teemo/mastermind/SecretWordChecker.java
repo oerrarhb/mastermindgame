@@ -14,7 +14,7 @@ public class SecretWordChecker {
 
     public static void main(String... argv) {
 
-        // Jcommander is used here if user want to play the easy mode
+        // Jcommander is used here if the user wants to play the easy mode
         var args = new Args();
         JCommander.newBuilder()
                 .addObject(args)
@@ -28,7 +28,7 @@ public class SecretWordChecker {
                 args.secretCode = SecretWordCheckerUtil.randomSecretWordGenerator();
             }
             var secretCode = args.secretCode;
-            // Errors handling : numeric and length
+            // Errors handling for secret code in the easy mode: numeric and length
             if (!pattern.matcher(secretCode).matches()) {
                 throw new NumberFormatException("Secret Code must contain only numbers !");
             }
@@ -40,7 +40,7 @@ public class SecretWordChecker {
                     System.out.println("Try guess secret word ?");
                     // We store user entry in this variable for processing
                     var userEntry = scanner.nextLine();
-                    // Errors handling : numeric and length
+                    // Errors handling for user entry: numeric and length
                     if (userEntry.isEmpty()) {
                         throw new IncorrectInputLength("Try not Empty Entry !");
                     }

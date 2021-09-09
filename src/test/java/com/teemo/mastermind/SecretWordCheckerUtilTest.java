@@ -2,9 +2,15 @@ package com.teemo.mastermind;
 
 import org.junit.Test;
 
+import java.util.regex.Pattern;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SecretWordCheckerUtilTest {
+
+    private static final Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
     @Test
     public void checkSecretWordTest() {
         // Secret Code 4040
@@ -55,5 +61,15 @@ public class SecretWordCheckerUtilTest {
         assertEquals("----", SecretWordCheckerUtil.checkSimilarity("2244", "4422"));
         assertEquals("++--", SecretWordCheckerUtil.checkSimilarity("4242", "4422"));
         assertEquals("++--", SecretWordCheckerUtil.checkSimilarity("2442", "4422"));
+    }
+
+    @Test
+    public void randomSecretWordGeneratorTest() {
+        // Test the length of secret code
+        assertEquals(4, SecretWordCheckerUtil.randomSecretWordGenerator().length());
+        // Test that generated secret code is always numaric
+        assertTrue(pattern.matcher(SecretWordCheckerUtil.randomSecretWordGenerator()).matches());
+        assertTrue(pattern.matcher(SecretWordCheckerUtil.randomSecretWordGenerator()).matches());
+        assertTrue(pattern.matcher(SecretWordCheckerUtil.randomSecretWordGenerator()).matches());
     }
 }

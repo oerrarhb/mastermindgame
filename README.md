@@ -10,6 +10,7 @@
 ```sh
 mvn clean pacakge
 ```
+
 * You have two modes of Gameplay Easy and Hard.
 * In the easy play you choose your secret code.
 * If you don't choose your secret code, by default a secret code of 4 numbers is generated and this is the hard mode.
