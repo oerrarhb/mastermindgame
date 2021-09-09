@@ -8,7 +8,7 @@
 * First build the package of the solution using Assembly
 
 ```sh
-mvn clean pacakge
+mvn clean package
 ```
 
 * You have two modes of Gameplay Easy and Hard.
