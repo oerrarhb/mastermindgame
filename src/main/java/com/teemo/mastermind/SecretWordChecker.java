@@ -3,24 +3,25 @@ package com.teemo.mastermind;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class SecretWordChecker {
-
     private static final Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
 
     public static void main(String[] argv) {
+
         var args = new Args();
         JCommander.newBuilder()
                 .addObject(args)
                 .build()
                 .parse(argv);
         try (var scanner = new Scanner(System.in)) {
-            var secretCode = args.secretCode;
-            if (secretCode.isEmpty()) {
-                throw new IncorrectInputLength("Secret Code must not be empty !");
+            if (Objects.equals(args.secretCode, null) || args.secretCode.isEmpty()) {
+                args.secretCode = SecretWordCheckerUtil.randomSecretWordGenerator();
             }
+            var secretCode = args.secretCode;
             if (!pattern.matcher(secretCode).matches()) {
                 throw new NumberFormatException("Secret Code must contain only numbers !");
             }
@@ -56,9 +57,8 @@ public class SecretWordChecker {
         }
     }
 
-
     static class Args {
         @Parameter(names = "--secret-word")
-        String secretCode = "1234";
+        String secretCode;
     }
 }

@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class SecretWordCheckerTest {
+public class SecretWordCheckerUtilTest {
     @Test
     public void checkSecretWordTest() {
         // Secret Code 4040

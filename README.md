@@ -11,10 +11,14 @@
 mvn clean pacakge
 ```
 
-* Next launch the executable using the command below. Here you can choose you secret-word. By the default 1234 will be used.
+* Next launch the executable using the command below. Here you can choose you secret-word. By the default 1234 will be
+  used.
+* You have two modes of Gameplay Easy and Hard.
+* In the easy play you choose your secret code.
+* If you don't choose your secret code, by default a secret code of 4 numbers is generated and this is the hard mode.
 
 ```sh
-./target/tm-deploy/play-game --secret-word $SECRET
+./target/tm-deploy/easy-play --secret-word $SECRET
 ```
 
 ## Docker Run

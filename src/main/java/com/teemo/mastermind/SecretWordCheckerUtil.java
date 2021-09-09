@@ -1,5 +1,7 @@
 package com.teemo.mastermind;
 
+import java.util.Random;
+
 public class SecretWordCheckerUtil {
     public static String checkSimilarity(String userEntry, String secretCode) {
         if (userEntry.equals(secretCode)) {
@@ -30,4 +32,16 @@ public class SecretWordCheckerUtil {
         }
         return outPut;
     }
+
+    public static String randomSecretWordGenerator() {
+        var leftLimit = 48; // 0
+        var rightLimit = 57; // 9
+        var secretCodeLength = 4; // Secret Code contains only 4 numbers
+        var random = new Random();
+
+        return random.ints(leftLimit, rightLimit + 1)
+                .limit(secretCodeLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
+    }
+
 }
